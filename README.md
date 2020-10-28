@@ -1,4 +1,6 @@
 # Hibernate Envers Tutorial
+![Badge](https://github.com/plavc/tutorial-envers/workflows/.github/workflows/maven.yml/badge.svg)
+
 
 ## Features
 * easy to use JPA auditing framework
