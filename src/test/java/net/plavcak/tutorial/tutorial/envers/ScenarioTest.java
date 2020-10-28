@@ -32,12 +32,6 @@ class ScenarioTest {
     private ShopService shopService;
 
     @Autowired
-    private CustomerRevisionRepository customerRevisionRepository;
-
-    @Autowired
-    private ProductRevisionRepository productRevisionRepository;
-
-    @Autowired
     private CustomerOrderRevisionRepository customerOrderRevisionRepository;
 
     private final Map<Long, Product> products = new HashMap<>();

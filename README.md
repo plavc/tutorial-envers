@@ -31,3 +31,11 @@ https://mvnrepository.com/artifact/org.hibernate/hibernate-envers
     <artifactId>spring-data-envers</artifactId>
 </dependency>
 ```
+
+## Resources
+
+**Hibernate Envers**
+* https://hibernate.org/orm/envers
+
+**Spring Envers**
+* https://github.com/spring-projects/spring-data-envers
