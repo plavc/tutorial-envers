@@ -1,5 +1,11 @@
 # Hibernate Envers Tutorial
 
+## Features
+* easy to use JPA auditing framework
+* history data is stored in separate tables (possible to store in separate schema)
+* fetching data from primary tables is not impacted
+* uses Hibernate listeners to populate history tables
+
 ## Side Effects
 
 * For each insert hibernate execute two additional inserts. One in `revinfo` table and another `product_aud` table.
@@ -34,8 +40,34 @@ https://mvnrepository.com/artifact/org.hibernate/hibernate-envers
 
 ## Resources
 
-**Hibernate Envers**
+Hibernate Envers
 * https://hibernate.org/orm/envers
 
-**Spring Envers**
+Spring Envers
 * https://github.com/spring-projects/spring-data-envers
+
+## Alternatives
+
+**Manually handling of historic data**
+
+Preserve historic changes in the primary table.
+
+Downside: 
+* single table for old versions - impact SQL operations and table size
+* with each query a revision id must be specified
+
+Benefits:
+* easy to implement
+* updating and inserting is not impacted - one sql operation is sufficient
+
+**Database level history tables**
+
+Create separate history tables. A primary table contains only latest version.
+History table is populated with triggers.
+
+Downside:
+* implementation of triggers is bound to database vendor
+* fetching history data must be implemented separately
+Benefits:
+* populating history table is done on database level therefore is more eficient as alternatives
+* history data is in a separate table
