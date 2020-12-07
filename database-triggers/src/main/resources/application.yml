@@ -1,0 +1,39 @@
+
+spring:
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+  mvc:
+    log-resolved-exception: false
+
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    org.hibernate: INFO
+
+---
+spring:
+  profiles: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/jpa-versioning-triggers
+    username: root
+    password: example
+
+---
+spring:
+  profiles: performance
+  jpa:
+    show-sql: false
+    properties:
+      hibernate.format_sql: false

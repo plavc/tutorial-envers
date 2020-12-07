@@ -1,0 +1,533 @@
+databaseChangeLog:
+  - changeSet:
+      id: intial-1
+      author: developer
+      changes:
+        - createSequence:
+            sequenceName: hibernate_sequence
+  - changeSet:
+      id: intial-2
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_pkey
+                  name: id
+                  type: BIGSERIAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: m_created_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  name: m_updated_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: m_version
+                  type: BIGINT
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+            tableName: customer
+  - changeSet:
+      id: intial-3
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_aud_pkey
+                  name: id
+                  type: SERIAL
+              - column:
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_aud_pkey
+                  name: rev
+                  type: INTEGER
+              - column:
+                  name: revtype
+                  type: SMALLINT
+              - column:
+                  name: revend
+                  type: INTEGER
+              - column:
+                  name: m_version
+                  type: BIGINT
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: address_mod
+                  type: BOOLEAN
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: first_name_mod
+                  type: BOOLEAN
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name_mod
+                  type: BOOLEAN
+            tableName: customer_aud
+  - changeSet:
+      id: intial-4
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: customer_id
+                  type: SERIAL
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: customer_orders_id
+                  type: SERIAL
+            tableName: customer_customer_order
+  - changeSet:
+      id: intial-5
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_order_pkey
+                  name: id
+                  type: BIGSERIAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: m_created_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  name: m_updated_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: m_version
+                  type: BIGINT
+              - column:
+                  name: notes
+                  type: TEXT
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: customer_id
+                  type: SERIAL
+            tableName: customer_order
+  - changeSet:
+      id: intial-6
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_order_aud_pkey
+                  name: id
+                  type: SERIAL
+              - column:
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_order_aud_pkey
+                  name: rev
+                  type: INTEGER
+              - column:
+                  name: revtype
+                  type: SMALLINT
+              - column:
+                  name: revend
+                  type: INTEGER
+              - column:
+                  name: m_version
+                  type: BIGINT
+              - column:
+                  name: notes
+                  type: TEXT
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: customer_id
+                  type: SERIAL
+            tableName: customer_order_aud
+  - changeSet:
+      id: intial-7
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: customer_order_id
+                  type: SERIAL
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: products_id
+                  type: SERIAL
+            tableName: customer_order_product
+  - changeSet:
+      id: intial-8
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_order_product_aud_pkey
+                  name: rev
+                  type: INTEGER
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_order_product_aud_pkey
+                  name: customer_order_id
+                  type: SERIAL
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_order_product_aud_pkey
+                  name: products_id
+                  type: SERIAL
+              - column:
+                  name: revtype
+                  type: SMALLINT
+              - column:
+                  name: revend
+                  type: INTEGER
+            tableName: customer_order_product_aud
+  - changeSet:
+      id: intial-9
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: product_pkey
+                  name: id
+                  type: BIGSERIAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: m_created_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  name: m_updated_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: m_version
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: numeric(19, 2)
+            tableName: product
+  - changeSet:
+      id: intial-10
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: product_aud_pkey
+                  name: id
+                  type: SERIAL
+              - column:
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: product_aud_pkey
+                  name: rev
+                  type: INTEGER
+              - column:
+                  name: revtype
+                  type: SMALLINT
+              - column:
+                  name: revend
+                  type: INTEGER
+              - column:
+                  name: m_version
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: name_mod
+                  type: BOOLEAN
+              - column:
+                  name: price
+                  type: numeric(19, 2)
+              - column:
+                  name: price_mod
+                  type: BOOLEAN
+            tableName: product_aud
+  - changeSet:
+      id: intial-11
+      author: developer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: revinfo_pkey
+                  name: rev
+                  type: INTEGER
+              - column:
+                  name: revtstmp
+                  type: BIGINT
+            tableName: revinfo
+  - changeSet:
+      id: intial-12
+      author: developer
+      changes:
+        - addUniqueConstraint:
+            columnNames: customer_orders_id
+            constraintName: uk_25tvggipl50p455ase8a7esqx
+            tableName: customer_customer_order
+  - changeSet:
+      id: intial-13
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: rev
+            baseTableName: customer_order_aud
+            constraintName: fk4xw5sgr8ilkq1g3hvcm5w7965
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-14
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: revend
+            baseTableName: customer_order_aud
+            constraintName: fk5hxni6ttnfoyb19rh0fy2o6vp
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-15
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: revend
+            baseTableName: product_aud
+            constraintName: fk5p6tj2b8lsyoofok68n5h7n57
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-16
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: revend
+            baseTableName: customer_aud
+            constraintName: fk6rei85s3koe6kc9ybqgx7rp2b
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-17
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: customer_order_id
+            baseTableName: customer_order_product
+            constraintName: fk8s9o38bpvt7gxgbrkmqjm6vn5
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: customer_order
+            validate: true
+  - changeSet:
+      id: intial-18
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: rev
+            baseTableName: product_aud
+            constraintName: fk9vwllld6jlw5xys1ay911oh1x
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-19
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: customer_orders_id
+            baseTableName: customer_customer_order
+            constraintName: fkatb16jwp7lj4hd3gyov2bge9i
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: customer_order
+            validate: true
+  - changeSet:
+      id: intial-20
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: rev
+            baseTableName: customer_order_product_aud
+            constraintName: fkdp5ouc3sf5ru48bwgauqccg5d
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-21
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: revend
+            baseTableName: customer_order_product_aud
+            constraintName: fkecacsydqay8ksu7pq6qww25o5
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-22
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: customer_id
+            baseTableName: customer_order
+            constraintName: fkf9abd30bhiqvugayxlpq8ryq9
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: customer
+            validate: true
+  - changeSet:
+      id: intial-23
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: rev
+            baseTableName: customer_aud
+            constraintName: fkgfwtmwfqmkddg7g0pg36luq54
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: rev
+            referencedTableName: revinfo
+            validate: true
+  - changeSet:
+      id: intial-24
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: customer_id
+            baseTableName: customer_customer_order
+            constraintName: fkhh5k9kfp9qvub7mj6k0yk1vux
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: customer
+            validate: true
+  - changeSet:
+      id: intial-25
+      author: developer
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: products_id
+            baseTableName: customer_order_product
+            constraintName: fkm66ghgqb38d8htvbv3pu8oaim
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: product
+            validate: true
+
